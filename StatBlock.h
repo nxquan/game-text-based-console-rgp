@@ -8,8 +8,8 @@ private:
 
 public:
   StatBlock() {
-    strength_ = 1u;
-    intellect_ = 1u;
+    strength_ = 0u;
+    intellect_ = 0u;
   }
 
   explicit StatBlock(stat_t s, stat_t t) {

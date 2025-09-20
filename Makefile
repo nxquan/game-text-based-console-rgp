@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -fdiagnostics-color=always -g -Wall -Wextra -std=c++17
 TARGET = main
-SOURCES = main.cpp Hp.cpp
+SOURCES = main.cpp PointWell.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # Build target
@@ -24,4 +24,4 @@ rebuild: clean $(TARGET)
 
 # Dependencies
 main.o: main.cpp allclasses.h
-Hp.o: Hp.cpp Hp.h types.h
+PointWell.o: PointWell.cpp PointWell.h types.h

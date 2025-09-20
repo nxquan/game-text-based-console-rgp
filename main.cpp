@@ -1,18 +1,21 @@
-#include "allclasses.h"
 #include <iostream>
 
+#include "PlayerCharacter.h"
+
 int main() {
-  Cleric c;
-  std::cout << "Cleric HP: " << c.getCurrentHp() << ", max hp: " << c.getMaxHp()
-            << ", strength: " << c.getStrength()
-            << ", level: " << c.getCurrentLevel()
-            << ", EXP: " << c.getCurrentEXP() << "/" << c.getEXPToNextLevel()
+  PlayerCharacter p(new Wizard());
+  std::cout << p.getClassName() << " HP: " << p.getCurrentHp() << "/"
+            << p.getMaxHp() << ", strength: " << p.getStrength()
+            << ", intellect: " << p.getIntellect()
+            << ", level: " << p.getCurrentLevel()
+            << ", EXP: " << p.getCurrentEXP() << "/" << p.getEXPToNextLevel()
             << "\n";
-  c.gainEXP(100u);
-  std::cout << "Cleric HP: " << c.getCurrentHp() << ", max hp: " << c.getMaxHp()
-            << ", strength: " << c.getStrength()
-            << ", level: " << c.getCurrentLevel()
-            << ", EXP: " << c.getCurrentEXP() << "/" << c.getEXPToNextLevel()
+  p.gainEXP(100u);
+  std::cout << p.getClassName() << " HP: " << p.getCurrentHp() << "/"
+            << p.getMaxHp() << ", strength: " << p.getStrength()
+            << ", intellect: " << p.getIntellect()
+            << ", level: " << p.getCurrentLevel()
+            << ", EXP: " << p.getCurrentEXP() << "/" << p.getEXPToNextLevel()
             << "\n";
 
   return 0;
