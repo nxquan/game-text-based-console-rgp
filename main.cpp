@@ -2,9 +2,18 @@
 #include <iostream>
 
 int main() {
-  Warrior w;
-  std::cout << "Warrior HP: " << w.getCurrentHp()
-            << ", max hp: " << w.getMaxHp() << ", strength: " << w.getStrength() << "\n";
+  Cleric c;
+  std::cout << "Cleric HP: " << c.getCurrentHp() << ", max hp: " << c.getMaxHp()
+            << ", strength: " << c.getStrength()
+            << ", level: " << c.getCurrentLevel()
+            << ", EXP: " << c.getCurrentEXP() << "/" << c.getEXPToNextLevel()
+            << "\n";
+  c.gainEXP(100u);
+  std::cout << "Cleric HP: " << c.getCurrentHp() << ", max hp: " << c.getMaxHp()
+            << ", strength: " << c.getStrength()
+            << ", level: " << c.getCurrentLevel()
+            << ", EXP: " << c.getCurrentEXP() << "/" << c.getEXPToNextLevel()
+            << "\n";
 
   return 0;
 }

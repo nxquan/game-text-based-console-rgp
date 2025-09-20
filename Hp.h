@@ -1,7 +1,6 @@
 #pragma once
-#include "hitpointtypes.h"
-#include <cstdint>
 #include <math.h>
+#include "types.h"
 
 class Hp {
 private:

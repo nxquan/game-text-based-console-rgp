@@ -24,4 +24,4 @@ rebuild: clean $(TARGET)
 
 # Dependencies
 main.o: main.cpp allclasses.h
-Hp.o: Hp.cpp Hp.h hitpointtypes.h
+Hp.o: Hp.cpp Hp.h types.h

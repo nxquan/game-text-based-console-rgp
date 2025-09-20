@@ -1,5 +1,5 @@
 #pragma once
-#include "stattypes.h"
+#include "types.h"
 
 class StatBlock {
 private:
@@ -20,4 +20,10 @@ public:
   stat_t getStrength() { return strength_; }
 
   stat_t getIntellect() { return intellect_; }
+
+protected:
+  void increaseStats(stat_t strGrowth, stat_t intGrowth) {
+    strength_ += strGrowth;
+    intellect_ += intGrowth;
+  }
 };
