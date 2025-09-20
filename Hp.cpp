@@ -1,5 +1,18 @@
 #include "Hp.h"
 
+Hp::Hp() {
+  currentHp_ = 1;
+  maxHp_ = 1;
+}
+
+Hp::Hp(hp_t cHP, hp_t mHP) {
+  currentHp_ = cHP;
+  maxHp_ = mHP;
+  if (currentHp_ > maxHp_) {
+    currentHp_ = maxHp_;
+  }
+}
+
 bool Hp::setMaxHp(hp_t newMaxHp) {
   if (newMaxHp < 1) {
     return false;

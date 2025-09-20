@@ -11,4 +11,12 @@
     "editor.stickyScroll.defaultModel": "foldingProviderModel",
     "editor.suggest.insertMode": "replace"
   },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-w>"],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    }
+  ]
 }

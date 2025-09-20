@@ -1,3 +1,4 @@
+#pragma once
 #include "hitpointtypes.h"
 #include <cstdint>
 #include <math.h>
@@ -9,6 +10,8 @@ private:
   hp_t shieldHp_;
 
 public:
+  Hp();
+  Hp(hp_t cHP, hp_t mHP);
   bool setMaxHp(hp_t newMaxHp);
   void takeDamage(hp_t damage);
   void heal(hp_t amount);
