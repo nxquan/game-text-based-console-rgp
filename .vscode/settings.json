@@ -1,0 +1,14 @@
+{
+  "files.associations": {
+    "cstdint": "cpp"
+  },
+  "editor.tabSize": 4,
+  "editor.detectIndentation": true,
+  "editor.useTabStops": true,
+  "[cpp]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.stickyScroll.defaultModel": "foldingProviderModel",
+    "editor.suggest.insertMode": "replace"
+  },
+}
