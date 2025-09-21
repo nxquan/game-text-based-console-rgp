@@ -57,7 +57,7 @@ public:
 #define PC_CONSTRUCT  : PlayerCharacterDelegate() {                            \
     HP->setMax(HP_BASE);                                                       \
     HP->increaseCurrent(HP_BASE);                                              \
-    increaseStats(STR_BASE, INT_BASE);                                         \
+    increaseStats(STR_BASE, INT_BASE, AGI_BASE);                               \
   }
 
 #define LEVEL_UP                                                               \
@@ -66,60 +66,28 @@ public:
     HP->setMax(HP->getMax() + addedHp);                                        \
     HP->increaseCurrent(addedHp);                                              \
     increaseStats((well_t)((STR_BASE + 1u) / 2.f),                             \
-                  (well_t)((INT_BASE + 1u) / 2.f));                            \
+                  (well_t)((INT_BASE + 1u) / 2.f),                             \
+                  (well_t)((AGI_BASE + 1u) / 2.f), 0u, 0u);                    \
   }
 
-class Cleric : public PlayerCharacterDelegate {
-private:
-protected:
-  LEVEL_UP
-public:
-  static const well_t HP_BASE = 14u;
-  static const stat_t STR_BASE = 2u;
-  static const stat_t INT_BASE = 3u;
+#define CHARACTER_TEMPLATE(classname, baseHp, baseStr, baseInt, baseAgi)       \
+  class classname : public PlayerCharacterDelegate {                           \
+  protected:                                                                   \
+    LEVEL_UP                                                                   \
+  public:                                                                      \
+    static const well_t HP_BASE = baseHp;                                      \
+    static const stat_t STR_BASE = baseStr;                                    \
+    static const stat_t INT_BASE = baseInt;                                    \
+    static const stat_t AGI_BASE = baseAgi;                                    \
+                                                                               \
+    std::string getClassName() override { return std::string(#classname); }    \
+    classname() PC_CONSTRUCT                                                   \
+  };
 
-  std::string getClassName() override { return std::string("Cleric"); }
-  Cleric() PC_CONSTRUCT
-};
-
-class Rogue : public PlayerCharacterDelegate {
-private:
-protected:
-  LEVEL_UP
-public:
-  static const well_t HP_BASE = 12u;
-  static const stat_t STR_BASE = 3u;
-  static const stat_t INT_BASE = 2u;
-
-  std::string getClassName() override { return std::string("Rogue"); }
-  Rogue() PC_CONSTRUCT
-};
-
-class Warrior : public PlayerCharacterDelegate {
-private:
-protected:
-  LEVEL_UP
-public:
-  static const well_t HP_BASE = 18u;
-  static const stat_t STR_BASE = 4u;
-  static const stat_t INT_BASE = 1u;
-
-  std::string getClassName() override { return std::string("Warrior"); }
-  Warrior() PC_CONSTRUCT
-};
-
-class Wizard : public PlayerCharacterDelegate {
-private:
-protected:
-  LEVEL_UP
-public:
-  static const well_t HP_BASE = 10u;
-  static const stat_t STR_BASE = 1u;
-  static const stat_t INT_BASE = 4u;
-
-  std::string getClassName() override { return std::string("Wizard"); }
-  Wizard() PC_CONSTRUCT
-};
+CHARACTER_TEMPLATE(Cleric, 14u, 3u, 5u, 1u)
+CHARACTER_TEMPLATE(Rogue, 12u, 3u, 3u, 5u)
+CHARACTER_TEMPLATE(Warrior, 18u, 5u, 2u, 2u)
+CHARACTER_TEMPLATE(Wizard, 10u, 1u, 8u, 1u)
 
 class PlayerCharacter {
 private:
@@ -141,6 +109,9 @@ public:
   well_t getMaxHp() { return pclass->getHP()->getMax(); }
   stat_t getStrength() { return pclass->getStrength(); }
   stat_t getIntellect() { return pclass->getIntellect(); }
+  stat_t getAgility() { return pclass->getAgility(); }
+  stat_t getArmor() { return pclass->getArmor(); }
+  stat_t getResistance() { return pclass->getResistance(); }
 
   void gainEXP(exp_t exp) { pclass->gainEXP(exp); }
   void takeDamage(well_t damage) { pclass->getHP()->reduce(damage); }
